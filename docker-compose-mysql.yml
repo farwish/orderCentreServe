@@ -8,7 +8,8 @@ version: '3'
 services:
   mysql:
     image: mysql:${IMG_MYSQL_VERSION}
-    container_name: ginger-db-con
+    command: --lower-case-table-names=1
+    container_name: ordercentreserve-db-con
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}

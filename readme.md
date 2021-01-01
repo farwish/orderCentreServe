@@ -69,3 +69,19 @@ route/api.go ->
 				  <- config/database.go
 ```
 
+## Pkg
+
+### golang-migrate
+
+CLI install: https://github.com/golang-migrate/migrate/tree/master/cmd/migrate
+
+MySQL driver: https://github.com/golang-migrate/migrate/tree/master/database/mysql
+
+CLI example
+```
+$ migrate create -ext sql -dir db/migrations -seq create_orders_table
+$ migrate -path db/migrations -database "mysql://root:123456@(127.0.0.1:33056)/testdb?multiStatements=true" up
+$ migrate -path db/migrations -database "mysql://root:123456@(127.0.0.1:33056)/testdb?multiStatements=true" version
+$ migrate -path db/migrations -database "mysql://root:123456@(127.0.0.1:33056)/testdb?multiStatements=true" force <2>
+$ migrate -path db/migrations -database "mysql://root:123456@(127.0.0.1:33056)/testdb?multiStatements=true" down
+```
