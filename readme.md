@@ -85,3 +85,25 @@ $ migrate -path db/migrations -database "mysql://root:123456@(127.0.0.1:33056)/t
 $ migrate -path db/migrations -database "mysql://root:123456@(127.0.0.1:33056)/testdb?multiStatements=true" force <2>
 $ migrate -path db/migrations -database "mysql://root:123456@(127.0.0.1:33056)/testdb?multiStatements=true" down
 ```
+
+### uuid
+
+https://github.com/google/uuid
+
+https://godoc.org/github.com/google/uuid
+
+### gorm
+
+Official example:
+```
+$ go get -u gorm.io/gorm
+$ go get -u gorm.io/driver/mysql
+$ go get -u gorm.io/driver/sqlite
+```
+
+https://gorm.io/zh_CN/docs/models.html
+
+https://gorm.io/zh_CN/docs/connecting_to_the_database.html
+
+https://gorm.io/zh_CN/docs/index.html#%E5%AE%89%E8%A3%85
+

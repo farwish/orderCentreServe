@@ -1,30 +1,32 @@
 BEGIN;
 
 CREATE TABLE IF NOT EXISTS orders (
-    order_id char(32) NOT NULL comment '订单ID',
+#   Generate by self uuid
+    order_id char(36) NOT NULL comment '订单ID',
 
-#   optional datatype for different system
-#   account_id char(32) not null,
+#   Changeable datatype for different system, change together with controller's validator if needed.
+#   account_id char(36) not null,
     account_id bigint unsigned NOT NULL comment '账号ID',
 
-#   optional datatype for different system
-#   product_id char(32) not null,
+#   Changeable datatype for different system, change together with controller's validator if needed.
+#   product_id char(36) not null,
     product_id bigint unsigned NOT NULL comment '商品ID',
 
-    product_name varchar(255) NOT NULL DEFAULT '' comment '商品名快照',
+    trade_no varchar(36) NOT NULL comment '订单号',
 
-    trade_no varchar(32) NOT NULL DEFAULT '' comment '订单号',
+    total_fee int unsigned NOT NULL comment '金额(分)',
 
-    total_fee int unsigned NOT NULL DEFAULT 0 comment '金额(分)',
+    status tinyint unsigned NOT NULL comment '订单状态(自定义)',
 
-    payment_type tinyint unsigned NOT NULL DEFAULT 0 comment '支付类型(自定义)',
-    payment_status tinyint unsigned NOT NULL DEFAULT 0 comment '支付状态(自定义)',
+    payment_type tinyint unsigned NOT NULL comment '支付类型(自定义)',
+    payment_status tinyint unsigned NOT NULL comment '支付状态(自定义)',
     payment_at datetime DEFAULT NULL comment '支付时间',
 
-    status tinyint unsigned NOT NULL DEFAULT 0 comment '订单状态(自定义)',
+#   optional value
+    product_name varchar(255) NOT NULL DEFAULT '' comment '商品名快照',
 
-    created_at datetime DEFAULT NULL,
-    updated_at datetime DEFAULT NULL,
+    created_at datetime NOT NULL,
+    updated_at datetime NOT NULL,
     deleted_at datetime DEFAULT NULL,
 
     PRIMARY KEY (`order_id`),

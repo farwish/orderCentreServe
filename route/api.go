@@ -21,4 +21,20 @@ func Set(e *gin.Engine) {
 	{
 		heartbeat.GET("/", http.Pong)
 	}
+
+	// Create an order for different place
+	purchase := top.Group("/purchase")
+	{
+		purchase.POST("/ali", http.PurchaseAli)
+	}
+
+	// Payment event from different place
+	payment := top.Group("/payment")
+	{
+		payment.Any("/ali-return-url", http.PaymentAliReturnUrl)
+		payment.Any("/ali-notify-url", http.PaymentAliNotifyUrl)
+
+		payment.Any("/wx-native-scanned-notify", http.PaymentWxNativeScannedNotify)
+		payment.Any("/wx-native-paid-notify", http.PaymentWxNativePaidNotify)
+	}
 }

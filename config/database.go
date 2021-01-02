@@ -1,10 +1,9 @@
 package config
 
 import (
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/spf13/viper"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 func init() {
@@ -24,8 +23,10 @@ func MySqlInit() *gorm.DB {
 	// db.DB().SetConnMaxLifetime(time.Minute)
 }
 
+// https://gorm.io/zh_CN/docs/connecting_to_the_database.html
 func mySqlConnect() *gorm.DB {
-	db, err := gorm.Open("mysql", viper.Get("database.mysql.dsn"))
+	dsn := viper.GetString("database.mysql.dsn")
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("MySql Connect error")
 	}
