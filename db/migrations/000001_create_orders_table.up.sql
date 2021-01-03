@@ -23,6 +23,8 @@ CREATE TABLE IF NOT EXISTS orders (
     payment_at datetime DEFAULT NULL comment '支付时间',
 
 #   optional value
+    source varchar(60) NOT NULL DEFAULT '' comment '来源(自定义)',
+#   optional value
     product_name varchar(255) NOT NULL DEFAULT '' comment '商品名快照',
 
     created_at datetime NOT NULL,
@@ -30,8 +32,10 @@ CREATE TABLE IF NOT EXISTS orders (
     deleted_at datetime DEFAULT NULL,
 
     PRIMARY KEY (`order_id`),
-    UNIQUE KEY `orders_trade_no_unique` (`trade_no`),
-    KEY `orders_product_id_index` (`product_id`)
+    KEY `orders_account_id_index` (`account_id`),
+    KEY `orders_product_id_index` (`product_id`),
+    KEY `orders_deleted_at_index` (`deleted_at`),
+    UNIQUE KEY `orders_trade_no_unique` (`trade_no`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

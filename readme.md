@@ -64,7 +64,8 @@ Support migration in migrate.go
 ```
 main.go ->
 route/api.go ->
-	app/http/xx.go ->
+	app/http/xx.go
+	app/request/xxxParams.go
 	app/repository/xxxRepo.go <- app/model/xxx.go
 				  <- config/database.go
 ```
@@ -106,4 +107,8 @@ https://gorm.io/zh_CN/docs/models.html
 https://gorm.io/zh_CN/docs/connecting_to_the_database.html
 
 https://gorm.io/zh_CN/docs/index.html#%E5%AE%89%E8%A3%85
+
+### alipay
+
+https://github.com/smartwalle/alipay
 

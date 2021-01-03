@@ -20,5 +20,15 @@
     "cors": {
       "allowOrigins": "*,https://example.com"
     }
+  },
+  "payment": {
+    "aliPay": {
+      "returnUrl": "xxx",
+      "notifyUrl": "xxx",
+      "appId": "xxx",
+      "privateKey": "xxx",
+      "aliPublicKey": "xxx",
+      "isProduction": true
+    }
   }
 }
