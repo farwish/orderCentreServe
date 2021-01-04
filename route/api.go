@@ -31,7 +31,7 @@ func Set(e *gin.Engine) {
 	// Payment event from different place
 	payment := top.Group("/payment")
 	{
-		// To allow any request(GET/POST only), NOT Any to without others..
+		// To allow any request(GET/POST only), NOT Any to exclude others(HEAD/PUT..)
 		payment.GET("/ali-return-url", http.PaymentAliReturnUrl)
 		payment.POST("/ali-return-url", http.PaymentAliReturnUrl)
 
